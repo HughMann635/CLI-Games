@@ -14,11 +14,14 @@ using namespace std::chrono;
 int gameselected = 0;
 
 int main() {    
-    cout << "CLI GAMES\n\n";
-    cout << "What game would you like to play? Enter the number corresponding with your game.\n";
-    cout << "Tic-Tac-Toe: input 1.";
-    cin >> gameselected;
-    if (gameselected == 1) {
-        gameloop();
+    while (4 > 3) {
+        system("cls");
+        cout << "CLI GAMES\n\n";
+        cout << "What game would you like to play? Enter the number corresponding with your game.\n";
+        cout << "Tic-Tac-Toe: input 1.";
+        cin >> gameselected;
+        if (gameselected == 1) {
+            gameloop();
+        }
     }
 }
