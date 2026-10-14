@@ -2,6 +2,8 @@
 #include <iostream>
 #include <thread>
 
+#include "tictactoe.h"
+
 using std::cout;
 using std::cin;
 using std::string;
@@ -11,9 +13,12 @@ using namespace std::chrono;
 
 int gameselected = 0;
 
-int main() {
+int main() {    
     cout << "CLI GAMES\n\n";
     cout << "What game would you like to play? Enter the number corresponding with your game.\n";
     cout << "Tic-Tac-Toe: input 1.";
     cin >> gameselected;
+    if (gameselected == 1) {
+        gameloop();
+    }
 }
