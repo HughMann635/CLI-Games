@@ -1,9 +1,19 @@
+#include <stdlib.h>
 #include <iostream>
 #include <thread>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::string;
+using std::endl;
+using namespace std::this_thread;
+using namespace std::chrono;
+
+int gameselected = 0;
 
 int main() {
-    cout << "Hello world";
-    cout << "Testing???";
+    cout << "CLI GAMES\n\n";
+    cout << "What game would you like to play? Enter the number corresponding with your game.\n";
+    cout << "Tic-Tac-Toe: input 1.";
+    cin >> gameselected;
 }
