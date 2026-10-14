@@ -22,6 +22,9 @@ int main() {
         cin >> gameselected;
         if (gameselected == 1) {
             gameloop();
+        } else {
+            cout << "Invalid input. Please re-enter.";
+            sleep_for(seconds(1));
         }
     }
 }
