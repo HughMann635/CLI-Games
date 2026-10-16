@@ -7,7 +7,6 @@
 using std::cout;
 using std::cin;
 using std::string;
-using std::endl;
 using namespace std::this_thread;
 using namespace std::chrono;
 

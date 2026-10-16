@@ -3,7 +3,11 @@
 #include <iostream>
 #include <thread>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::string;
+using namespace std::this_thread;
+using namespace std::chrono;
 
 int board[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 inline string move1, move2, l1, l2, n1, n2;
