@@ -21,10 +21,16 @@ void printboard();
 bool checkwin(int player);
 
 inline int gameloop() {
-    board[9] = {0};
+    for (int i = 0; i < 9; i++) board[i] = 0;
     while (true) {
         system("cls");
         printboard();
+        if (checkwin(2)) {
+            cout << "Player 2 wins! Good job!";
+            sleep_for(seconds(1));
+            break;
+        }
+
         cout << "It's Player 1's turn now:";
         while (true) {
             cin >> move1;
@@ -43,15 +49,26 @@ inline int gameloop() {
                 cout << "Already occupied. Please re-enter.";
             } else break; 
         }
-        board[m1n] = 1;
+        board[m1n] = 1;        
+        bool sus = true;
+        for (int i = 0; i < 9; i++) {
+            if (board[i] == 0) {
+                sus = false;
+            }
+        }
+        system("cls");
+        printboard();
         if (checkwin(1)) {
             cout << "Player 1 wins! Good job!";
             sleep_for(seconds(1));
             break;
         }
-        
-        system("cls");
-        printboard();
+        if (sus) { 
+            cout << "It's a draw!";
+            sleep_for(seconds(1));
+            break;
+        }
+
         cout << "It's Player 2's turn now:";
         while (true) {
             cin >> move2;
@@ -71,11 +88,6 @@ inline int gameloop() {
             } else break; 
         }
         board[m2n] = 2;
-        if (checkwin(2)) {
-            cout << "Player 2 wins! Good job!";
-            sleep_for(seconds(1));
-            break;
-        }
     }
     return 0;
 }
