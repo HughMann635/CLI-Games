@@ -5,21 +5,23 @@
 
 using namespace std;
 
-inline int board[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-
 inline string move1, move2, l1, l2, n1, n2;
 inline int l1n, l2n, m1n, m2n, n1n, n2n;
 
-inline int i = -1;
 inline bool properturn, badsyntax, win1, win2 = false;
-inline bool draw = true;
+
+inline int i = -1;
 
 void printboard();
 void checkwin();
 
 inline int gameloop() {
     system("cls");
+    int board[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    bool draw = true;
+    bool g = true;
     while (!win1 && !win2) {
+        g = true;
         cout << "It's Player 1's turn now:";
         cin >> move1;
         l1 = move1[0];
@@ -32,7 +34,6 @@ inline int gameloop() {
         if (n1 == "3") n1n = 2;
         m1n = l1n + n1n;
         board[m1n] = 1;
-        cout << m1n;
     }
     return 0;
 }
