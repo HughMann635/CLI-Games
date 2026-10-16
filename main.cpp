@@ -11,7 +11,7 @@ using std::endl;
 using namespace std::this_thread;
 using namespace std::chrono;
 
-int gameselected = 0;
+string gameselected = "";
 
 int main() {    
     while (4 > 3) {
@@ -19,8 +19,9 @@ int main() {
         cout << "CLI GAMES\n\n";
         cout << "What game would you like to play? Enter the number corresponding with your game.\n";
         cout << "Tic-Tac-Toe: input 1.";
+        
         cin >> gameselected;
-        if (gameselected == 1) {
+        if (gameselected == "1") {
             gameloop();
         } else {
             cout << "Invalid input. Please re-enter.";
