@@ -14,16 +14,13 @@ inline bool properturn, badsyntax, win1, win2 = false;
 inline int i = -1;
 
 void printboard();
-void checkwin();
+bool checkwin(int player);
 
 inline int gameloop() {
     board[9] = {0};
-    bool draw = true;
-    bool g = true;
-    while (!win1 && !win2) {
+    while (true) {
         system("cls");
         printboard();
-        g = true;
         cout << "It's Player 1's turn now:";
         while (true) {
             cin >> move1;
@@ -43,6 +40,11 @@ inline int gameloop() {
             } else break; 
         }
         board[m1n] = 1;
+        if (checkwin(1)) {
+            cout << "Player 1 wins! Good job!";
+            sleep_for(seconds(1));
+            break;
+        }
         
         system("cls");
         printboard();
@@ -65,6 +67,11 @@ inline int gameloop() {
             } else break; 
         }
         board[m2n] = 2;
+        if (checkwin(2)) {
+            cout << "Player 2 wins! Good job!";
+            sleep_for(seconds(1));
+            break;
+        }
     }
     return 0;
 }
@@ -87,4 +94,16 @@ void printboard() {
     cout << "B      " << boardtxt[3] << "   |   " << boardtxt[4] << "   |   " << boardtxt[5] << "       \n";
     cout << "    -------|-------|-------    \n";
     cout << "C      " << boardtxt[6] << "   |   " << boardtxt[7] << "   |   " << boardtxt[8] << "       \n\n";
+}
+
+bool checkwin(int player) {
+    if (board[0] == player && board[1] == player && board[2] == player) return true;
+    if (board[3] == player && board[4] == player && board[5] == player) return true;
+    if (board[6] == player && board[7] == player && board[8] == player) return true;
+    if (board[0] == player && board[3] == player && board[6] == player) return true;
+    if (board[1] == player && board[4] == player && board[7] == player) return true;
+    if (board[2] == player && board[5] == player && board[8] == player) return true;
+    if (board[0] == player && board[4] == player && board[8] == player) return true;
+    if (board[2] == player && board[4] == player && board[6] == player) return true;
+    return false;
 }
