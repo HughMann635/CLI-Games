@@ -23,7 +23,12 @@ inline int gameloop() {
     while (!win1 && !win2) {
         g = true;
         cout << "It's Player 1's turn now:";
-        cin >> move1;
+        while (true) {
+            cin >> move1;
+            if (move1.size() != 2 || (move1[0] != 'A' && move1[0] != 'B' && move1[0] != 'C') || (move1[1] != '1' && move1[1] != '2' && move1[1] != '3')) {
+                cout << "Invalid input. Please re-enter.";
+            } else break; 
+        }
         l1 = move1[0];
         n1 = move1[1];
         if (l1 == "A") l1n = 0;
@@ -35,7 +40,12 @@ inline int gameloop() {
         m1n = l1n + n1n;
         board[m1n] = 1;
         cout << "It's Player 2's turn now:";
-        cin >> move2;
+        while (true) {
+            cin >> move2;
+            if (move2.size() != 2 || (move2[0] != 'A' && move2[0] != 'B' && move2[0] != 'C') || (move2[1] != '1' && move2[1] != '2' && move2[1] != '3')) {
+                cout << "Invalid input. Please re-enter.";
+            } else break; 
+        }
         l2 = move2[0];
         n2 = move2[1];
         if (l2 == "A") l2n = 0;
