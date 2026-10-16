@@ -34,6 +34,18 @@ inline int gameloop() {
         if (n1 == "3") n1n = 2;
         m1n = l1n + n1n;
         board[m1n] = 1;
+        cout << "It's Player 2's turn now:";
+        cin >> move2;
+        l2 = move2[0];
+        n2 = move2[1];
+        if (l2 == "A") l2n = 0;
+        if (l2 == "B") l2n = 3;
+        if (l2 == "C") l2n = 6;
+        if (n2 == "1") n2n = 0;
+        if (n2 == "2") n2n = 1;
+        if (n2 == "3") n2n = 2;
+        m2n = l2n + n2n;
+        board[m2n] = 2;
     }
     return 0;
 }
