@@ -5,6 +5,7 @@
 
 using namespace std;
 
+int board[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 inline string move1, move2, l1, l2, n1, n2;
 inline int l1n, l2n, m1n, m2n, n1n, n2n;
 
@@ -16,11 +17,12 @@ void printboard();
 void checkwin();
 
 inline int gameloop() {
-    system("cls");
-    int board[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    board[9] = {0};
     bool draw = true;
     bool g = true;
     while (!win1 && !win2) {
+        system("cls");
+        printboard();
         g = true;
         cout << "It's Player 1's turn now:";
         while (true) {
@@ -39,6 +41,9 @@ inline int gameloop() {
         if (n1 == "3") n1n = 2;
         m1n = l1n + n1n;
         board[m1n] = 1;
+        
+        system("cls");
+        printboard();
         cout << "It's Player 2's turn now:";
         while (true) {
             cin >> move2;
@@ -58,4 +63,24 @@ inline int gameloop() {
         board[m2n] = 2;
     }
     return 0;
+}
+
+void printboard() {
+    string boardtxt[9] = {"", "", "", "", "", "", "", "", ""};
+    for (int i = 0; i < 9; i++) {
+        switch (board[i]) {
+            case 0: boardtxt[i] = " ";
+            break;
+            case 1: boardtxt[i] = "X";
+            break;
+            case 2: boardtxt[i] = "O";
+            break;
+        }
+    }
+    cout << "       1       2       3       \n\n";
+    cout << "A      " << boardtxt[0] << "   |   " << boardtxt[1] << "   |   " << boardtxt[2] << "       \n";
+    cout << "    -------|-------|-------    \n";
+    cout << "B      " << boardtxt[3] << "   |   " << boardtxt[4] << "   |   " << boardtxt[5] << "       \n";
+    cout << "    -------|-------|-------    \n";
+    cout << "C      " << boardtxt[6] << "   |   " << boardtxt[7] << "   |   " << boardtxt[8] << "       \n\n";
 }
