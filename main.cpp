@@ -3,6 +3,7 @@
 #include <thread>
 
 #include "tictactoe.h"
+#include "snakesnladders.h"
 
 using std::cout;
 using std::cin;
@@ -22,6 +23,8 @@ int main() {
         cin >> gameselected;
         if (gameselected == "1") {
             gameloop_ttt();
+        } else if (gameselected == "2") {
+            gameloop_snl();
         } else {
             cout << "Invalid input. Please re-enter.";
             sleep_for(seconds(1));
