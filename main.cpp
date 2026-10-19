@@ -18,7 +18,9 @@ int main() {
         system("cls");
         cout << "CLI GAMES\n\n";
         cout << "What game would you like to play? Enter the number corresponding with your game.\n";
-        cout << "Tic-Tac-Toe: input 1.";
+        cout << "Tic-Tac-Toe: input 1.\n";
+        cout << "Tic-Tac-Toe: input 2.\n";
+        cout << "Enter here: ";
         
         cin >> gameselected;
         if (gameselected == "1") {
