@@ -33,14 +33,14 @@ inline int gameloop_snl() {
         sleep_for(seconds(1));
         if (pos1 >= 100) {
             if (pos1 > 100) {
-                cout << "You cannot roll past 100! You must reroll until you achieve exactly 100 to win.";
+                cout << "You cannot roll past 100! You must reroll until you achieve exactly 100 to win.\n";
                 pos1 -= dice1;
                 sleep_for(seconds(1));
             } else {
                 cout << "They are now on position " << pos1 << " of the board.\n";
                 sleep_for(seconds(1));
-                cout << "You reached 100 and won! Good job!";
-                sleep_for(seconds(2));
+                cout << "You reached 100 and won! Good job!\n";
+                sleep_for(seconds(20));
                 return 0;
             }
         }
@@ -55,15 +55,15 @@ inline int gameloop_snl() {
         dice2 = (std::rand() % 6) + 1;
         pos2 += dice2;
         if (pos2 >= 100) {
-            if (pos2 == 100) {
-                cout << "You cannot roll past 100! You must reroll until you achieve exactly 100 to win.";
+            if (pos2 > 100) {
+                cout << "You cannot roll past 100! You must reroll until you achieve exactly 100 to win.\n";
                 pos1 -= dice1;
                 sleep_for(seconds(1));
             } else {
                 cout << "They are now on position " << pos2 << " of the board.\n";
                 sleep_for(seconds(1));
-                cout << "You reached 100 and won! Good job!";
-                sleep_for(seconds(2));
+                cout << "You reached 100 and won! Good job!\n";
+                sleep_for(seconds(20));
                 return 0;
             }
         }
