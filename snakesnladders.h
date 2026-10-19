@@ -14,7 +14,7 @@ using namespace std::chrono;
 
 int board_snl[100] = {0};
 
-int dice;
+int dice1, dice2;
 int pos1 = 0;
 int pos2 = 0;
 
@@ -26,23 +26,21 @@ inline int gameloop_snl() {
         cout << "It's Player 1's turn now.\n";
         cout << "Rolling...\n";
         sleep_for(seconds(1));
-        dice = (std::rand() % 6) + 1;
-        pos1 += dice;
-        cout << "Player 1 rolled a" << dice <<"on their roll.";
+        dice1 = (std::rand() % 6) + 1;
+        pos1 += dice1;
+        cout << "Player 1 rolled a " << dice1 <<" on their roll.\n";
         sleep_for(seconds(1));
-        cout << "They are now on position" << pos1 << "of the board.";
+        cout << "They are now on position " << pos1 << " of the board.\n";
         sleep_for(seconds(1));
 
         cout << "It's Player 2's turn now.\n";
         cout << "Rolling...\n";
         sleep_for(seconds(1));
-        dice = (std::rand() % 6) + 1;
-        pos2 += dice;
-        cout << "Player 2 rolled a" << dice <<"on their roll.";
+        dice2 = (std::rand() % 6) + 1;
+        pos2 += dice2;
+        cout << "Player 2 rolled a " << dice2 <<" on their roll.\n";
         sleep_for(seconds(1));
-        cout << "They are now on position" << pos1 << "of the board.";
-        sleep_for(seconds(1));
-        cout << "They are now on position" << pos1 << "of the board.";
+        cout << "They are now on position " << pos2 << " of the board.\n";
         sleep_for(seconds(1));
     }
 }
