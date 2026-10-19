@@ -18,12 +18,25 @@ int dice1, dice2;
 int pos1 = 0;
 int pos2 = 0;
 
+void printboard_snl() {
+    for (int i = 10; i > 0; i--) {
+        for (int j = 0; j < 10; j++) {
+            if (board_snl[i*10+j] == 1) cout << "1";
+            if (board_snl[i*10+j] == 2) cout << "2";
+            if (board_snl[i*10+j] == 3) cout << "3";
+            else cout << "0";
+        }
+        cout << "\n";
+    }
+}
+
 inline int gameloop_snl() {
     pos1 = 0;
     pos2 = 0;
-
-    for (int i = 0; i < 100; i++) board_snl[100] = {0};
     while (true) {
+        system("cls");
+        printboard_snl();
+        for (int i = 0; i < 100; i++) board_snl[100] = {0};
         cout << "It's Player 1's turn now.\n";
         cout << "Rolling...\n";
         sleep_for(seconds(1));
@@ -44,7 +57,7 @@ inline int gameloop_snl() {
                 return 0;
             }
         }
-        cout << "They are now on position " << pos1 << " of the board.\n";
+        cout << "They are now on position " << pos1 << " of the board.\n\n";
         sleep_for(seconds(1));
         if (board_snl[pos1-1] == 2) board_snl[pos1-1] = 3; 
         else board_snl[pos1-1] = 1;
@@ -54,6 +67,8 @@ inline int gameloop_snl() {
         sleep_for(seconds(1));
         dice2 = (std::rand() % 6) + 1;
         pos2 += dice2;
+        cout << "Player 2 rolled a " << dice2 <<" on their roll.\n";
+        sleep_for(seconds(1));
         if (pos2 >= 100) {
             if (pos2 > 100) {
                 cout << "You cannot roll past 100! You must reroll until you achieve exactly 100 to win.\n";
@@ -67,9 +82,7 @@ inline int gameloop_snl() {
                 return 0;
             }
         }
-        cout << "Player 2 rolled a " << dice2 <<" on their roll.\n";
-        sleep_for(seconds(1));
-        cout << "They are now on position " << pos2 << " of the board.\n";
+        cout << "They are now on position " << pos2 << " of the board.\n\n";
         sleep_for(seconds(1));
         if (board_snl[pos2-1] == 1) board_snl[pos2-1] = 3;
         else board_snl[pos2-1] = 2;
