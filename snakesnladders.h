@@ -12,8 +12,11 @@ using namespace std::chrono;
 //TODO: RENAME VARS!!!
 //cuz I cant have multiple of the same obv
 
-int board[100] = {0};
+int board_snl[100] = {0};
 
-inline int gameloop() {
-    
+inline int gameloop_snl() {
+    for (int i = 0; i < 100; i++) board_snl[100] = {0};
+    while (true) {
+        
+    }
 }
