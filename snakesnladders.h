@@ -12,7 +12,7 @@ using namespace std::chrono;
 //TODO: RENAME VARS!!!
 //cuz I cant have multiple of the same obv
 
-int board_snl[100] = {0};
+int board_snl[100] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int dice1, dice2;
 int pos1 = 0;
@@ -22,9 +22,9 @@ void printboard_snl() {
     for (int i = 10; i > 0; i--) {
         for (int j = 0; j < 10; j++) {
             if (board_snl[i*10+j] == 1) cout << "1";
-            if (board_snl[i*10+j] == 2) cout << "2";
-            if (board_snl[i*10+j] == 3) cout << "3";
-            else cout << "0";
+            else if (board_snl[i*10+j] == 2) cout << "2";
+            else if (board_snl[i*10+j] == 3) cout << "3";
+            else if (board_snl[i*10+j] == 0) cout << "0";
         }
         cout << "\n";
     }
@@ -37,6 +37,7 @@ inline int gameloop_snl() {
         system("cls");
         printboard_snl();
         for (int i = 0; i < 100; i++) board_snl[100] = {0};
+
         cout << "It's Player 1's turn now.\n";
         cout << "Rolling...\n";
         sleep_for(seconds(1));
@@ -53,7 +54,7 @@ inline int gameloop_snl() {
                 cout << "They are now on position " << pos1 << " of the board.\n";
                 sleep_for(seconds(1));
                 cout << "You reached 100 and won! Good job!\n";
-                sleep_for(seconds(20));
+                sleep_for(seconds(2));
                 return 0;
             }
         }
@@ -78,7 +79,7 @@ inline int gameloop_snl() {
                 cout << "They are now on position " << pos2 << " of the board.\n";
                 sleep_for(seconds(1));
                 cout << "You reached 100 and won! Good job!\n";
-                sleep_for(seconds(20));
+                sleep_for(seconds(2));
                 return 0;
             }
         }
