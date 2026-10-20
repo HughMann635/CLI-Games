@@ -17,6 +17,8 @@ int board_snl[100] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 int dice1, dice2;
 int pos1 = 0;
 int pos2 = 0;
+int ladderlist[5][2];
+int snakeslist[7][2];
 
 void printboard_snl() {
     for (int i = 10; i > 0; i--) {
@@ -42,11 +44,24 @@ void printboard_snl() {
 inline int gameloop_snl() {
     pos1 = 0;
     pos2 = 0;
+    for (int i = 0; i < 5; i++) {
+        while (true) {
+            ladderlist[i][0] = std::rand() % 90;
+            ladderlist[i][1] = std::rand() % 35;
+            if (ladderlist[i][0] + ladderlist[i][1] < 95) break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        while (true) {
+            snakeslist[i][0] = std::rand() % 88 + 10;
+            snakeslist[i][1] = std::rand() % 45;
+            if (snakeslist[i][0] - snakeslist[i][1] > 5) break;
+        }
+    }
     while (true) {
         system("cls");
         printboard_snl();
         for (int i = 0; i < 100; i++) board_snl[i] = {0};
-
         cout << "It's Player 1's turn now.\n";
         cout << "Rolling...\n";
         sleep_for(seconds(1));
