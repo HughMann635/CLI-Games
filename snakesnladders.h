@@ -69,8 +69,8 @@ inline int gameloop_snl() {
         }
         cout << "They are now on position " << pos1 << " of the board.\n\n";
         sleep_for(seconds(1));
-        if (board_snl[pos1-1] == 2) board_snl[pos1-1] = 3; 
-        else board_snl[pos1-1] = 1;
+        if (board_snl[pos1] == 2) board_snl[pos1] = 3; 
+        else board_snl[pos1] = 1;
 
         cout << "It's Player 2's turn now.\n";
         cout << "Rolling...\n";
@@ -94,7 +94,7 @@ inline int gameloop_snl() {
         }
         cout << "They are now on position " << pos2 << " of the board.\n\n";
         sleep_for(seconds(1));
-        if (board_snl[pos2-1] == 1) board_snl[pos2-1] = 3;
-        else board_snl[pos2-1] = 2;
+        if (board_snl[pos2] == 1) board_snl[pos2] = 3;
+        else board_snl[pos2] = 2;
     }
 }
