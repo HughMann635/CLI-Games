@@ -19,6 +19,7 @@ int pos1 = 0;
 int pos2 = 0;
 int ladderlist[5][2];
 int snakeslist[7][2];
+int travelpoints[24];
 
 void printboard_snl() {
     for (int i = 10; i > 0; i--) {
@@ -48,19 +49,38 @@ inline int gameloop_snl() {
         while (true) {
             ladderlist[i][0] = std::rand() % 90;
             ladderlist[i][1] = std::rand() % 35;
-            if (ladderlist[i][0] + ladderlist[i][1] < 95) break;
+            bool ladderdupe = false;
+            for (int i = 0; i < 24; i++) {
+                ladderdupe = std::find(std::begin(travelpoints), std::end(travelpoints), ladderlist[i][0]) || std::find(std::begin(travelpoints), std::end(travelpoints), ladderlist[i][1]);
+                if (ladderdupe) break;
+            }
+            if (ladderlist[i][0] + ladderlist[i][1] < 95 && !ladderdupe) { 
+                travelpoints[i*2] = ladderlist[i][0];
+                travelpoints[i*2+1] = ladderlist[i][1];
+                break; 
+            }
         }
     }
     for (int i = 0; i < 7; i++) {
         while (true) {
             snakeslist[i][0] = std::rand() % 88 + 10;
             snakeslist[i][1] = std::rand() % 45;
-            if (snakeslist[i][0] - snakeslist[i][1] > 5) break;
+            bool snakesdupe = false;
+            for (int i = 0; i < 24; i++) {
+                snakesdupe = std::find(std::begin(travelpoints), std::end(travelpoints), snakeslist[i][0]) || std::find(std::begin(travelpoints), std::end(travelpoints), snakeslist[i][1]);
+                if (snakesdupe) break;
+            }
+            if (snakeslist[i][0] - snakeslist[i][1] > 5 && !snakesdupe) { 
+                travelpoints[i*2+10] = snakeslist[i][0];
+                travelpoints[i*2+11] = snakeslist[i][1];
+                break;
+            }
         }
     }
     while (true) {
         system("cls");
         printboard_snl();
+        cout << travelpoints;
         for (int i = 0; i < 100; i++) board_snl[i] = {0};
         cout << "It's Player 1's turn now.\n";
         cout << "Rolling...\n";
