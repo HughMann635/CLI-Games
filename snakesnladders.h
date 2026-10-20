@@ -20,11 +20,22 @@ int pos2 = 0;
 
 void printboard_snl() {
     for (int i = 10; i > 0; i--) {
-        for (int j = 0; j < 10; j++) {
-            if (board_snl[i*10+j] == 1) cout << "1";
-            else if (board_snl[i*10+j] == 2) cout << "2";
-            else if (board_snl[i*10+j] == 3) cout << "3";
-            else if (board_snl[i*10+j] == 0) cout << "0";
+        if (i % 2 == 1) {
+            for (int j = 0; j < 10; j++) {
+                cout << (i-1)*10+j+1;
+                /*if (board_snl[i*10+j] == 1) cout << "1";
+                else if (board_snl[i*10+j] == 2) cout << "2";
+                else if (board_snl[i*10+j] == 3) cout << "3";
+                else if (board_snl[i*10+j] == 0) cout << "0";*/
+            }
+        } else {
+            for (int j = 10; j > 0; j--) {
+                cout << (i-1)*10+j;
+                /*if (board_snl[i*10+j] == 1) cout << "1";
+                else if (board_snl[i*10+j] == 2) cout << "2";
+                else if (board_snl[i*10+j] == 3) cout << "3";
+                else if (board_snl[i*10+j] == 0) cout << "0";*/
+            }
         }
         cout << "\n";
     }
