@@ -44,9 +44,13 @@ inline int gameloop_ttt() {
             if (n1 == "3") n1n = 2;
             m1n = l1n + n1n;
             if (move1.size() != 2 || (move1[0] != 'A' && move1[0] != 'B' && move1[0] != 'C') || (move1[1] != '1' && move1[1] != '2' && move1[1] != '3')) {
-                cout << "Invalid input. Please re-enter.";
+                system("cls");
+                printboard_ttt();
+                cout << "Invalid input. Player 1, please re-enter.";
             } else if (board_ttt[m1n] != 0) {
-                cout << "Already occupied. Please re-enter.";
+                system("cls");
+                printboard_ttt();
+                cout << "Already occupied. Player 1, please re-enter.";
             } else break; 
         }
         board_ttt[m1n] = 1;        
@@ -82,8 +86,12 @@ inline int gameloop_ttt() {
             if (n2 == "3") n2n = 2;
             m2n = l2n + n2n;
             if (move2.size() != 2 || (move2[0] != 'A' && move2[0] != 'B' && move2[0] != 'C') || (move2[1] != '1' && move2[1] != '2' && move2[1] != '3')) {
-                cout << "Invalid input. Please re-enter.";
+                system("cls");
+                printboard_ttt();
+                cout << "Invalid input. Player 2, please re-enter.";
             } else if (board_ttt[m2n] != 0) {
+                system("cls");
+                printboard_ttt();
                 cout << "Already occupied. Please re-enter.";
             } else break; 
         }
