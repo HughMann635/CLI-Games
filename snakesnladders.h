@@ -12,7 +12,7 @@ using namespace std::chrono;
 //TODO: RENAME VARS!!!
 //cuz I cant have multiple of the same obv
 
-int board_snl[100] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int board_snl[101] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int dice1, dice2;
 int pos1 = 0;
@@ -22,24 +22,29 @@ int snakeslist[7][2];
 int travelpoints[24];
 
 void printboard_snl() {
+    cout << "\n";
     for (int i = 10; i > 0; i--) {
+        cout << "  ";
         if (i % 2 == 0) {
             for (int j = 10; j > 0; j--) {
                 if (board_snl[(i-1)*10+j] == 1) cout << "1";
                 else if (board_snl[(i-1)*10+j] == 2) cout << "2";
                 else if (board_snl[(i-1)*10+j] == 3) cout << "3";
-                else cout << "0";
+                else cout << (i-1)*10+j;
+                if (j != 1) cout << " | ";
             }
         } else {
             for (int j = 0; j < 10; j++) {
                 if (board_snl[(i-1)*10+j+1] == 1) cout << "1";
                 else if (board_snl[(i-1)*10+j+1] == 2) cout << "2";
                 else if (board_snl[(i-1)*10+j+1] == 3) cout << "3";
-                else cout << "0";
+                else cout << (i-1)*10+j+1;
+                if (j != 9) cout << " | ";
             }
         }
-        cout << "\n";
+        if (i != 1) cout << "\n ---------------------------------------\n";
     }
+    cout << "\n\n";
 }
 
 inline int gameloop_snl() {
