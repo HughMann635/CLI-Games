@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <thread>
+#include <iomanip>
+#include <string>
 
 using std::cout;
 using std::cin;
@@ -27,22 +29,22 @@ void printboard_snl() {
         cout << "  ";
         if (i % 2 == 0) {
             for (int j = 10; j > 0; j--) {
-                if (board_snl[(i-1)*10+j] == 1) cout << "1";
-                else if (board_snl[(i-1)*10+j] == 2) cout << "2";
-                else if (board_snl[(i-1)*10+j] == 3) cout << "3";
-                else cout << (i-1)*10+j;
+                if (board_snl[(i-1)*10+j] == 1) cout << "\033[1;31m-1-\033[0m";
+                else if (board_snl[(i-1)*10+j] == 2) cout << "\033[1;32m-2-\033[0m";
+                else if (board_snl[(i-1)*10+j] == 3) cout << "\033[1;33m1-2\033[0m";
+                else cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j);
                 if (j != 1) cout << " | ";
             }
         } else {
             for (int j = 0; j < 10; j++) {
-                if (board_snl[(i-1)*10+j+1] == 1) cout << "1";
-                else if (board_snl[(i-1)*10+j+1] == 2) cout << "2";
-                else if (board_snl[(i-1)*10+j+1] == 3) cout << "3";
-                else cout << (i-1)*10+j+1;
+                if (board_snl[(i-1)*10+j+1] == 1) cout << "\033[1;31m-1-\033[0m";
+                else if (board_snl[(i-1)*10+j+1] == 2) cout << "\033[1;32m-2-\033[0m";
+                else if (board_snl[(i-1)*10+j+1] == 3) cout << "\033[1;33m1-2\033[0m";
+                else cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j+1);
                 if (j != 9) cout << " | ";
             }
         }
-        if (i != 1) cout << "\n ---------------------------------------\n";
+        if (i != 1) cout << "\n -----------------------------------------------------------\n";
     }
     cout << "\n\n";
 }
