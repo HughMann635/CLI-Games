@@ -35,6 +35,9 @@ void printboard_snl(int travelpoints[12][2]) {
                 else if (board_snl[(i-1)*10+j] == 2) cout << red << "-2-" << base;
                 else if (board_snl[(i-1)*10+j] == 3) cout << purple << "1-2" << base;
                 else { 
+                    for (int k = 0; k < 12; k++) {
+                        if (travelpoints[k][0] == (i-1)*10+j || travelpoints[k][1] == (i-1)*10+j) cout << tpcolors[k];
+                    }
                     cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j) << base; 
                 }
                 if (j != 1) cout << " | ";
@@ -45,6 +48,9 @@ void printboard_snl(int travelpoints[12][2]) {
                 else if (board_snl[(i-1)*10+j+1] == 2) cout << red << "-2-" << base;
                 else if (board_snl[(i-1)*10+j+1] == 3) cout << purple << "1-2" << base;
                 else { 
+                    for (int k = 0; k < 12; k++) {
+                        if (travelpoints[k][0] == (i-1)*10+j+1 || travelpoints[k][1] == (i-1)*10+j+1) cout << tpcolors[k];
+                    }
                     cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j+1) << base; 
                 }
                 if (j != 9) cout << " | ";
