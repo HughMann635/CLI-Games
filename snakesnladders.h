@@ -109,6 +109,9 @@ inline int gameloop_snl() {
         printboard_snl(travelpoints);
         for (int i = 0; i < 12; i++) cout << travelpoints[i][0] << " , " << travelpoints[i][1] << " , ";
         for (int i = 0; i < 100; i++) board_snl[i] = {0};
+        
+        //player 1 turn
+        
         cout << "It's Player 1's turn now.\n";
         cout << "Rolling...\n";
         sleep_for(seconds(1));
@@ -124,15 +127,28 @@ inline int gameloop_snl() {
             } else {
                 cout << "They are now on position " << pos1 << " of the board.\n";
                 sleep_for(seconds(1));
-                cout << "You reached 100 and won! Good job!\n";
+                cout << "Player 1 reached 100 and won! Good job!\n";
                 sleep_for(seconds(2));
                 return 0;
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            if (travelpoints[i][0] == pos1) {
+                pos1 = travelpoints[i][1];
+                cout << "Player 1 landed on a ladder! Nice! They climb up from " << travelpoints[i][0] << " to " << travelpoints[i][1] << ".";
+            }
+        }
+        for (int i = 0; i < 7; i++) {
+            if (travelpoints[i+5][0] == pos1) {
+                cout << "Uh oh! Player 1 landed on a snake! They slide down from " << travelpoints[i+5][0] << " to " << travelpoints[i+5][1] << ".";
             }
         }
         cout << "They are now on position " << pos1 << " of the board.\n\n";
         sleep_for(seconds(1));
         if (board_snl[pos1] == 2) board_snl[pos1] = 3; 
         else board_snl[pos1] = 1;
+
+        //player 2 turn
 
         cout << "It's Player 2's turn now.\n";
         cout << "Rolling...\n";
@@ -149,9 +165,21 @@ inline int gameloop_snl() {
             } else {
                 cout << "They are now on position " << pos2 << " of the board.\n";
                 sleep_for(seconds(1));
-                cout << "You reached 100 and won! Good job!\n";
+                cout << "Player 2 reached 100 and won! Good job!\n";
                 sleep_for(seconds(2));
                 return 0;
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            if (travelpoints[i][0] == pos2) {
+                pos2 = travelpoints[i][1];
+                cout << "Player 2 landed on a ladder! Nice! They climb up from " << travelpoints[i][0] << " to " << travelpoints[i][1] << ".";
+            }
+        }
+        for (int i = 0; i < 7; i++) {
+            if (travelpoints[i+5][0] == pos2) {
+                pos2 = travelpoints[i][1];
+                cout << "Uh oh! Player 2 landed on a snake! They slide down from " << travelpoints[i+5][0] << " to " << travelpoints[i+5][1] << ".";
             }
         }
         cout << "They are now on position " << pos2 << " of the board.\n\n";
