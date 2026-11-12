@@ -33,7 +33,7 @@ inline int gameloop_ttt() {
             break;
         }
 
-        cout << "It's Player 1's turn now:";
+        cout << "It's " << blue << "Player 1's " << base << "turn now: ";
         while (true) {
             cin >> move1;
             l1 = move1[0];
@@ -48,11 +48,11 @@ inline int gameloop_ttt() {
             if (move1.size() != 2 || (move1[0] != 'A' && move1[0] != 'B' && move1[0] != 'C') || (move1[1] != '1' && move1[1] != '2' && move1[1] != '3')) {
                 system("cls");
                 printboard_ttt();
-                cout << "Invalid input. Player 1, please re-enter.";
+                cout << "Invalid input. Player 1, please re-enter. ";
             } else if (board_ttt[m1n] != 0) {
                 system("cls");
                 printboard_ttt();
-                cout << "Already occupied. Player 1, please re-enter.";
+                cout << "Already occupied. Player 1, please re-enter. ";
             } else break; 
         }
         board_ttt[m1n] = 1;        
@@ -75,7 +75,7 @@ inline int gameloop_ttt() {
             break;
         }
 
-        cout << "It's Player 2's turn now:";
+        cout << "It's " << red << "Player 2's " << base << "turn now: ";
         while (true) {
             cin >> move2;
             l2 = move2[0];
@@ -90,11 +90,11 @@ inline int gameloop_ttt() {
             if (move2.size() != 2 || (move2[0] != 'A' && move2[0] != 'B' && move2[0] != 'C') || (move2[1] != '1' && move2[1] != '2' && move2[1] != '3')) {
                 system("cls");
                 printboard_ttt();
-                cout << "Invalid input. Player 2, please re-enter.";
+                cout << "Invalid input. Player 2, please re-enter. ";
             } else if (board_ttt[m2n] != 0) {
                 system("cls");
                 printboard_ttt();
-                cout << "Already occupied. Please re-enter.";
+                cout << "Already occupied. Please re-enter. ";
             } else break; 
         }
         board_ttt[m2n] = 2;
@@ -108,9 +108,9 @@ void printboard_ttt() {
         switch (board_ttt[i]) {
             case 0: boardtxt[i] = " ";
             break;
-            case 1: boardtxt[i] = "X";
+            case 1: boardtxt[i] = blue+"X"+base;
             break;
-            case 2: boardtxt[i] = "O";
+            case 2: boardtxt[i] = red+"O"+base;
             break;
         }
     }
