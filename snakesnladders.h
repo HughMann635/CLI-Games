@@ -107,7 +107,6 @@ inline int gameloop_snl() {
     while (true) {
         system("cls");
         printboard_snl(travelpoints);
-        for (int i = 0; i < 12; i++) cout << travelpoints[i][0] << " , " << travelpoints[i][1] << " , ";
         for (int i = 0; i < 100; i++) board_snl[i] = {0};
         
         //player 1 turn
