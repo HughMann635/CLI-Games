@@ -23,9 +23,9 @@ int pos1 = 0;
 int pos2 = 0;
 int ladderlist[5][2];
 int snakeslist[7][2];
-int travelpoints[24];
+int travelpoints[12][2];
 
-void printboard_snl() {
+void printboard_snl(int travelpoints[12][2]) {
     cout << "\n";
     for (int i = 10; i > 0; i--) {
         cout << "  ";
@@ -34,7 +34,9 @@ void printboard_snl() {
                 if (board_snl[(i-1)*10+j] == 1) cout << blue << "-1-" << base;
                 else if (board_snl[(i-1)*10+j] == 2) cout << red << "-2-" << base;
                 else if (board_snl[(i-1)*10+j] == 3) cout << purple << "1-2" << base;
-                else cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j);
+                else { 
+                    cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j) << base; 
+                }
                 if (j != 1) cout << " | ";
             }
         } else {
@@ -42,7 +44,9 @@ void printboard_snl() {
                 if (board_snl[(i-1)*10+j+1] == 1) cout << blue << "-1-" << base;
                 else if (board_snl[(i-1)*10+j+1] == 2) cout << red << "-2-" << base;
                 else if (board_snl[(i-1)*10+j+1] == 3) cout << purple << "1-2" << base;
-                else cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j+1);
+                else { 
+                    cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j+1) << base; 
+                }
                 if (j != 9) cout << " | ";
             }
         }
@@ -54,23 +58,24 @@ void printboard_snl() {
 inline int gameloop_snl() {
     pos1 = 0;
     pos2 = 0;
-    for (int i = 0; i < 24; i++) {
-        travelpoints[i] = -1;
+    for (int i = 0; i < 12; i++) {
+        travelpoints[i][0] = -1;
+        travelpoints[i][1] = -1;
     }
     for (int i = 0; i < 5; i++) {
         while (true) {
             ladderlist[i][0] = std::rand() % 90;
             ladderlist[i][1] = std::rand() % 35;
             bool ladderdupe = false;
-            for (int j = 0; j < 24; j++) {
-                if (travelpoints[j] == ladderlist[i][0] || travelpoints[j] == ladderlist[i][1]) {
+            for (int j = 0; j < 12; j++) {
+                if (travelpoints[j][0] == ladderlist[i][0] || travelpoints[j][1] == ladderlist[i][1] || travelpoints[j][1] == ladderlist[i][0] || travelpoints[j][0] == ladderlist[i][1]) {
                     ladderdupe = true;
                     break;
                 }
             }
             if (ladderlist[i][0] + ladderlist[i][1] < 95 && !ladderdupe) { 
-                travelpoints[i*2] = ladderlist[i][0];
-                travelpoints[i*2+1] = ladderlist[i][1];
+                travelpoints[i][0] = ladderlist[i][0];
+                travelpoints[i][1] = ladderlist[i][1];
                 break;
             }
         }
@@ -80,23 +85,23 @@ inline int gameloop_snl() {
             snakeslist[i][0] = std::rand() % 88 + 10;
             snakeslist[i][1] = std::rand() % 45;
             bool snakesdupe = false;
-            for (int j = 0; j < 24; j++) {
-                if (travelpoints[j] == snakeslist[i][0] || travelpoints[j] == snakeslist[i][1]) {
+            for (int j = 0; j < 12; j++) {
+                if (travelpoints[j][0] == snakeslist[i][0] || travelpoints[j][1] == snakeslist[i][1] || travelpoints[j][1] == snakeslist[i][0] || travelpoints[j][0] == snakeslist[i][1]) {
                     snakesdupe = true;
                     break;
                 }
             }
             if (snakeslist[i][0] - snakeslist[i][1] > 5 && !snakesdupe) { 
-                travelpoints[i*2+10] = snakeslist[i][0];
-                travelpoints[i*2+11] = snakeslist[i][1];
+                travelpoints[i+5][0] = snakeslist[i][0];
+                travelpoints[i+5][1] = snakeslist[i][1];
                 break;
             }
         }
     }
     while (true) {
         system("cls");
-        printboard_snl();
-        for (int i = 0; i < 24; i++) cout << travelpoints[i] << " , ";
+        printboard_snl(travelpoints);
+        for (int i = 0; i < 12; i++) cout << travelpoints[i][0] << " , " << travelpoints[i][1] << " , ";
         for (int i = 0; i < 100; i++) board_snl[i] = {0};
         cout << "It's Player 1's turn now.\n";
         cout << "Rolling...\n";
