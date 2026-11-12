@@ -64,8 +64,8 @@ inline int gameloop_snl() {
     }
     for (int i = 0; i < 5; i++) {
         while (true) {
-            ladderlist[i][0] = std::rand() % 90;
-            ladderlist[i][1] = std::rand() % 35;
+            ladderlist[i][0] = std::rand() % 85;
+            ladderlist[i][1] = ladderlist[i][0] + std::rand() % 35;
             bool ladderdupe = false;
             for (int j = 0; j < 12; j++) {
                 if (travelpoints[j][0] == ladderlist[i][0] || travelpoints[j][1] == ladderlist[i][1] || travelpoints[j][1] == ladderlist[i][0] || travelpoints[j][0] == ladderlist[i][1]) {
@@ -83,7 +83,7 @@ inline int gameloop_snl() {
     for (int i = 0; i < 7; i++) {
         while (true) {
             snakeslist[i][0] = std::rand() % 88 + 10;
-            snakeslist[i][1] = std::rand() % 45;
+            snakeslist[i][1] = snakeslist[i][0] - std::rand() % 45;
             bool snakesdupe = false;
             for (int j = 0; j < 12; j++) {
                 if (travelpoints[j][0] == snakeslist[i][0] || travelpoints[j][1] == snakeslist[i][1] || travelpoints[j][1] == snakeslist[i][0] || travelpoints[j][0] == snakeslist[i][1]) {
