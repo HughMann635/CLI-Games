@@ -23,23 +23,31 @@ int ladderlist[5][2];
 int snakeslist[7][2];
 int travelpoints[24];
 
+//colors (copy pasted across files lol)
+std::string base = "\033[0m";
+std::string red = "\033[31m";
+std::string green = "\033[32m";
+std::string yellow = "\033[33m";
+std::string blue = "\033[34m";
+std::string purple = "\033[38;2;255;0;255m";
+
 void printboard_snl() {
     cout << "\n";
     for (int i = 10; i > 0; i--) {
         cout << "  ";
         if (i % 2 == 0) {
             for (int j = 10; j > 0; j--) {
-                if (board_snl[(i-1)*10+j] == 1) cout << "\033[1;31m-1-\033[0m";
-                else if (board_snl[(i-1)*10+j] == 2) cout << "\033[1;32m-2-\033[0m";
-                else if (board_snl[(i-1)*10+j] == 3) cout << "\033[1;33m1-2\033[0m";
+                if (board_snl[(i-1)*10+j] == 1) cout << blue << "-1-" << base;
+                else if (board_snl[(i-1)*10+j] == 2) cout << red << "-2-" << base;
+                else if (board_snl[(i-1)*10+j] == 3) cout << purple << "1-2" << base;
                 else cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j);
                 if (j != 1) cout << " | ";
             }
         } else {
             for (int j = 0; j < 10; j++) {
-                if (board_snl[(i-1)*10+j+1] == 1) cout << "\033[1;31m-1-\033[0m";
-                else if (board_snl[(i-1)*10+j+1] == 2) cout << "\033[1;32m-2-\033[0m";
-                else if (board_snl[(i-1)*10+j+1] == 3) cout << "\033[1;33m1-2\033[0m";
+                if (board_snl[(i-1)*10+j+1] == 1) cout << blue << "-1-" << base;
+                else if (board_snl[(i-1)*10+j+1] == 2) cout << red << "-2-" << base;
+                else if (board_snl[(i-1)*10+j+1] == 3) cout << purple << "1-2" << base;
                 else cout << std::setw(3) << std::setfill('0') << std::to_string((i-1)*10+j+1);
                 if (j != 9) cout << " | ";
             }
