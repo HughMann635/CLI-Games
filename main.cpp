@@ -4,6 +4,7 @@
 
 #include "tictactoe.h"
 #include "snakesnladders.h"
+#include "colors.h"
 
 using std::cout;
 using std::cin;

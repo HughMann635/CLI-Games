@@ -3,6 +3,8 @@
 #include <iostream>
 #include <thread>
 
+#include "colors.h"
+
 using std::cout;
 using std::cin;
 using std::string;
