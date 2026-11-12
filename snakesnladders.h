@@ -106,12 +106,27 @@ inline int gameloop_snl() {
     }
     while (true) {
         system("cls");
+        
         printboard_snl(travelpoints);
+        
+        std::cout << "LADDERS --- All the greens and blues on the board\n\n";
+        for (int i = 0; i < 5; i++) {
+            std::cout << tpcolors[i] << i+1 << ". " << travelpoints[i][0] << " -> " << travelpoints[i][1] << base;
+            if (i == 4) cout << "\n";
+            else cout << "    ";
+        }
+        std::cout << "\nSNAKES --- All the reds and purples on the board\n\n";
+        for (int i = 0; i < 7; i++) {
+            std::cout << tpcolors[i+5] << i+1 << ". " << travelpoints[i+5][0] << " -> " << travelpoints[i+5][1] << base;
+            if (i == 6) cout << "\n";
+            else cout << "    ";
+        }
+
         for (int i = 0; i < 100; i++) board_snl[i] = {0};
         
         //player 1 turn
         
-        cout << "It's Player 1's turn now.\n";
+        cout << "\nIt's Player 1's turn now.\n";
         cout << "Rolling...\n";
         sleep_for(seconds(1));
         dice1 = (std::rand() % 6) + 1;
