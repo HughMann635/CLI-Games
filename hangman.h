@@ -36,16 +36,16 @@ inline int gameloop_hgmn() {
         while (true) {
             cin >> letter;
             if (!(std::find(letterlist.begin(), letterlist.end(), toupper(letter[0])) != letterlist.end()) || letter.length() > 1) {
-                cout << "\nThat's not a letter. Try again. ";
+                cout << "\nThat's not a letter. Try again: ";
             } else break;
         }
 
         for (int i = 0; i < word.length(); i++) {
-            if (word[i] == letter[0]) {
-                guess[i] = letter[0];
+            if (word[i] == tolower(letter[0])) {
+                guess[i] = tolower(letter[0]);
                 break;
             }
-            if (i == word.length()-1) faileds.append(std::to_string(letter[0]));
+            if (i == word.length()-1) faileds += letter[0];
         }
 
         std::cout << guess << "\n\n";
