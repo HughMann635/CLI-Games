@@ -39,6 +39,10 @@ inline int gameloop_hgmn() {
             cin >> letter;
             if (!(std::find(letterlist.begin(), letterlist.end(), toupper(letter[0])) != letterlist.end()) || letter.length() > 1) {
                 cout << "\nThat's not a letter. Try again: ";
+            } else if (std::find(faileds.begin(), faileds.end(), tolower(letter[0])) != faileds.end()) {
+                cout << "\nYou've already guessed that, and it's not in the word. Try again: ";
+            } else if (std::find(guess.begin(), guess.end(), tolower(letter[0])) != guess.end()) {
+                cout << "\nYou've already guessed that, and it's in the word. Try again: ";
             } else break;
         }
 
