@@ -37,7 +37,7 @@ int main() {
             cout << "\n\nTic-Tac-Toe is a game played on a 3x3 grid.\n\nThe goal is to fill a row, column, or diagonal with your symbol before your opponent.\n\nOne player uses X to fill in the grid, the other player uses O.\n\nAs of right now, only PvP is supported. Bots may come soon!\n\n";
             sleep_for(seconds(10));
         } else if (gameselected == "2R") {
-            cout << "\n\nIn Snakes and Ladders, you try to reach the 100th square on a board before your opponent!\n\nRoll a 6-sided die, and that determines how many squares you advance.\n\nThere are ladders, whcih take you up, and snakes, which bring you down, scattered across the board.\n\nNote that you must achieve exactly 100 to win. You cannot roll above a 100!\n\n(This game has very little strategy involved, so the version here is uninteractive.)\n\n";
+            cout << "\n\nIn Snakes and Ladders, you try to reach the 100th square on a board before your opponent!\n\nRoll a 6-sided die, and that determines how many squares you advance.\n\nThere are ladders, whcih take you up, and snakes, which bring you down, scattered across the board.\n\nNote that you must achieve exactly 100 to win. You cannot roll above a 100!\n\n(This game has very little strategy involved, so the version here is uninteractive and essentially a glorified coin flip.)\n\n";
             sleep_for(seconds(10));
         } else {
             cout << "Invalid input. Please re-enter.";
