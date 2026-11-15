@@ -23,7 +23,7 @@ std::list<char> letterlist = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
 std::string faileds = "";
 bool in_guess = true;
 
-inline int gameloop_hgmn() {
+inline int gameloop_hgmn(int lives) {
     word = wordbank[std::rand() % 20];
     guess = "";
     for (int i = 0; i < word.length(); i++) {
@@ -54,6 +54,7 @@ inline int gameloop_hgmn() {
             if (i == word.length()-1 && !in_guess) {
                 std::cout << "\nThat letter isn't in the word, unfortunately!\n\nYour progress:    "; 
                 faileds += letter[0];
+                lives -= 1;
             } else if (i == word.length()-1 && in_guess) {
                 std::cout << "\nThat letter appears in the word!\n\nYour progress:    ";
             }
@@ -64,7 +65,12 @@ inline int gameloop_hgmn() {
         std::cout << faileds[faileds.length()-1] << "\n\n";
         sleep_for(milliseconds(1500));
         if (guess == word) {
-            cout << "Congrats! You guessed the word!";
+            cout << "Congrats! You guessed the word and won!";
+            sleep_for(seconds(2));
+            return 0;
+        }
+        if (lives == 0) {
+            cout << "Unfortunately, you ran out of lives and lost.";
             sleep_for(seconds(2));
             return 0;
         }

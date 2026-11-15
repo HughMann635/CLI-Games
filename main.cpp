@@ -25,14 +25,22 @@ int main() {
         cout << "Hangman: input 3.\n";
         cout << "Type 1R for the rules for Tic-Tac-Toe, 2R for the rules for Snakes and Ladders, or 3R for the rules for Hangman.\n";
         cout << "Enter here: ";
-        
+        std::string lives_hgmn = "0";
         cin >> gameselected;
         if (gameselected == "1") {
             gameloop_ttt();
         } else if (gameselected == "2") {
             gameloop_snl();
         } else if (gameselected == "3") {
-            gameloop_hgmn();
+            cout << "What difficulty mode would you like to play on?\nEasy: 9 lives\nNormal: 6 lives\nHard: 4 lives\nImpossible: 2 lives\nType the corresponding number: "; 
+            while (true) {
+                cin >> lives_hgmn;
+                if (lives_hgmn == "1") gameloop_hgmn(9);
+                else if (lives_hgmn == "2") gameloop_hgmn(6);
+                else if (lives_hgmn == "3") gameloop_hgmn(4);
+                else if (lives_hgmn == "4") gameloop_hgmn(2); 
+                else cout << "Invalid input. Please re-enter: ";
+            }
         } else if (gameselected == "1R") {
             cout << "\n\nTic-Tac-Toe is a game played on a 3x3 grid.\n\nThe goal is to fill a row, column, or diagonal with your symbol before your opponent.\n\nOne player uses X to fill in the grid, the other player uses O.\n\nAs of right now, only PvP is supported. Bots may come soon!\n\n";
             sleep_for(seconds(10));
