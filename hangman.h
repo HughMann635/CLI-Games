@@ -26,6 +26,7 @@ bool in_guess = true;
 inline int gameloop_hgmn(int lives) {
     word = wordbank[std::rand() % 20];
     guess = "";
+    faileds = "";
     for (int i = 0; i < word.length(); i++) {
         guess.append("_");
     }
@@ -65,6 +66,7 @@ inline int gameloop_hgmn(int lives) {
             std::cout << faileds[i];
             i != faileds.length() - 1 ? std::cout << " , " : std::cout << "\n\n";
         }
+        std::cout << "Lives left: " << lives << "\n\n";
         sleep_for(milliseconds(1500));
         if (guess == word) {
             cout << "Congrats! You guessed the word and won!";
