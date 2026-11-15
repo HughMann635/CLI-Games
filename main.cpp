@@ -20,10 +20,10 @@ int main() {
         system("cls");
         cout << "CLI GAMES\n\n";
         cout << "What game would you like to play? Enter the number corresponding with your game.\n";
-        cout << "Tic-Tac-Toe: input 1.\n";
-        cout << "Snakes and Ladders: input 2.\n";
-        cout << "Hangman: input 3.\n";
-        cout << "Type 1R for the rules for Tic-Tac-Toe, 2R for the rules for Snakes and Ladders, or 3R for the rules for Hangman.\n";
+        cout << red << "Tic-Tac-Toe: input 1.\n";
+        cout << green << "Snakes and Ladders: input 2.\n";
+        cout << blue << "Hangman: input 3.\n";
+        cout << base << "Type 1R for the rules for Tic-Tac-Toe, 2R for the rules for Snakes and Ladders, or 3R for the rules for Hangman.\n";
         cout << "Enter here: ";
         std::string lives_hgmn = "0";
         cin >> gameselected;

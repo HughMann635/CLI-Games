@@ -53,20 +53,22 @@ inline int gameloop_hgmn(int lives) {
                 in_guess = true;
             }
             if (i == word.length()-1 && !in_guess) {
-                std::cout << "\nThat letter isn't in the word, unfortunately!\n\nYour progress:    "; 
+                std::cout << "\nThat letter isn't in the word, unfortunately!\n\n" << tpcolors[std::rand() % 12] << "Your progress:    " << base; 
                 faileds += letter[0];
                 lives -= 1;
             } else if (i == word.length()-1 && in_guess) {
-                std::cout << "\nThat letter appears in the word!\n\nYour progress:    ";
+                std::cout << "\nThat letter appears in the word!\n\n" << tpcolors[std::rand() % 12] << "Your progress:    " << base;
             }
         }
 
-        std::cout << guess << "\n\nLetters that aren't in the word:    ";
+        std::cout << guess << "\n\n" << tpcolors[std::rand() % 12] << "Letters that aren't in the word:    " << base;
         for (int i = 0; i < faileds.length(); i++) { 
             std::cout << faileds[i];
             i != faileds.length() - 1 ? std::cout << " , " : std::cout << "\n\n";
         }
-        std::cout << "Lives left: " << lives << "\n\n";
+        if (lives > 6) std::cout << "Lives left: " << green << lives << base << "\n\n";
+        else if (lives <= 6 && lives > 3) std::cout << "Lives left: " << yellow << lives << base << "\n\n";
+        else std::cout << "Lives left: " << red << lives << base << "\n\n";
         sleep_for(milliseconds(1500));
         if (guess == word) {
             cout << "Congrats! You guessed the word and won!";
