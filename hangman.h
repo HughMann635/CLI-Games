@@ -61,8 +61,10 @@ inline int gameloop_hgmn(int lives) {
         }
 
         std::cout << guess << "\n\nLetters that aren't in the word:    ";
-        for (int i = 0; i < faileds.length()-1; i++) std::cout << faileds[i] << " , ";
-        std::cout << faileds[faileds.length()-1] << "\n\n";
+        for (int i = 0; i < faileds.length(); i++) { 
+            std::cout << faileds[i];
+            i != faileds.length() - 1 ? std::cout << " , " : std::cout << "\n\n";
+        }
         sleep_for(milliseconds(1500));
         if (guess == word) {
             cout << "Congrats! You guessed the word and won!";
